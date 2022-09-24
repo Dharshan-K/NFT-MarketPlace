@@ -6,7 +6,7 @@ import Link from "next/link";
 function MyApp({ Component, pageProps }) {
   return (
     <div>
-      <nav classname="border-b p-6">
+      <nav className="border-b p-6">
         <p className="text-4xl font-bold">NFT MarketPlace</p>
         <div className="flex mt-4 hover:mt-8">
           <Link href="/">
