@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
     <div>
       <nav className="border-b p-6">
         <p className="text-4xl font-bold">NFT MarketPlace</p>
-        <div className="flex mt-4 hover:mt-8">
+        <div className="flex mt-4 ">
           <Link href="/">
             <a className="mr-6 text-blue-500">Home</a>
           </Link>
