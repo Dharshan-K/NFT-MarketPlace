@@ -2,9 +2,7 @@
 
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import axios from "axios";
-import ConnectWallet from "../components/connectButton";
 import Web3Modal from "web3modal";
 import { useEffect, useState } from "react";
 import {
@@ -37,11 +35,13 @@ export default function Home() {
     );
 
     const data = await nftMarketContract.fetchMarketItems();
-    console.log("---------------------");
+    console.log("NFT details");
+    console.log(data);
 
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await nftContract.tokenURI(i.tokenId);
+        console.log("tokenUri: ", tokenUri);
         const meta = await axios.get(tokenUri);
         let price = ethers.utils.formatUnits(i.price.toString(), "ether");
         let item = {
@@ -49,10 +49,14 @@ export default function Home() {
           tokenId: i.tokenId.toNumber(),
           seller: i.seller,
           owner: i.owner,
-          image: meta.data.image,
+          image: meta.data.imageURL,
           name: meta.data.name,
           description: meta.data.description,
         };
+        // console.log("the data", meta.data);
+        console.log("--------------------------");
+        console.log("data", meta.data);
+        console.log("parsed", Object.values(meta.data));
         return item;
       })
     );
@@ -77,6 +81,8 @@ export default function Home() {
       { value: price }
     );
   }
+
+  // console.log(nfts);
 
   if (loadingState === "loaded" && !nfts.length)
     return <h1 className="px-20 py-20 text-3xl">No items</h1>;
