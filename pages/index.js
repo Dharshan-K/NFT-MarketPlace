@@ -120,6 +120,7 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <h1>{process.env.NEXT_PUBLIC_WEB3_API_KEY}</h1>
     </div>
   );
 }
