@@ -11,7 +11,7 @@ import {
   NFTMarketAbi,
 } from "../constants/index";
 
-export default function uploadToIPFS() {
+export default function UploadToIPFS() {
   const { fileUrl, setFileUrl } = useState();
   function getAccessToken() {
     return process.env.NEXT_PUBLIC_WEB3_API_KEY;
