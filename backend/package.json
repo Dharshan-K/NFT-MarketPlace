@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@openzeppelin/contracts": "^4.7.3",
     "hardhat": "^2.9.9",
     "hardhat-deploy": "^0.11.12"

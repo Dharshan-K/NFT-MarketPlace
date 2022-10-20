@@ -1,6 +1,6 @@
 /** @format */
 
-const { networks, deployments, getNamedAccounts, ethers } = require("hardhat");
+const { network, deployments, getNamedAccounts, ethers } = require("hardhat");
 
 const NFT_ABI_FILE = "../constants/NFTAbi.json";
 const NFT_CONTRACT_ADDRESS_FILE = "../constants/NFTContractAddress.json";
@@ -18,8 +18,12 @@ module.exports = async function () {
     deployments,
   });
   console.log("deploying contract............");
+  console.log(deployer);
+  console.log(process.env.PRIVATE_KEY);
+
   const { deploy, log } = deployments;
   const nftMarketDeployed = await deploy("NFTMarket", { from: deployer });
+  console.log("----------------------------------");
   const nftDeployed = await deploy("NFT", {
     from: deployer,
     args: [nftMarketDeployed.address],
@@ -86,3 +90,5 @@ module.exports = async function () {
     JSON.stringify(NFTMarketContractAddress)
   );
 };
+
+module.exports.tags = ["all", "NFT"];

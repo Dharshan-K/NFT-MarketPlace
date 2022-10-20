@@ -22,14 +22,16 @@ export default function Home() {
   }, []);
 
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://eth-goerli.g.alchemy.com/v2/9blXxQvhid7O-Zg9xXMOWqnGo6kCn2dL"
+    );
     const nftContract = new ethers.Contract(
-      NFTContractAddress["31337"][0],
+      NFTContractAddress["5"][0],
       NFTAbi,
       provider
     );
     const nftMarketContract = new ethers.Contract(
-      NFTMarketContractAddress["31337"][0],
+      NFTMarketContractAddress["5"][0],
       NFTMarketAbi,
       provider
     );
@@ -120,7 +122,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <h1>{process.env.NEXT_PUBLIC_WEB3_API_KEY}</h1>
     </div>
   );
 }
