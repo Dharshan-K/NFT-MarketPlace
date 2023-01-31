@@ -30,6 +30,7 @@ module.exports = {
       url: GOERLI_RPC_URL,
       accounts: [GOERLI_PRIVATE_KEY],
       chainId: 5,
+      allowUnlimitedContractSize: true,
     },
   },
 };

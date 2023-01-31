@@ -158,4 +158,6 @@ contract NFTMarket is ReentrancyGuard {
         }
         return items;
     }
+
+    receive() external payable {}
 }
